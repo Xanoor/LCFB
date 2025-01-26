@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+    --main: #ffc60a;
+}
+
+::selection {
+    color: var(--main);
+}
+
+body {
+    position: relative;
+    background: #1d1d1d;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    place-items: flex-start;
+    flex-direction: column;
+    font-family: "Inter", serif;
+    color: white;
+    overflow: hidden;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 50%;
+    height: 75%;
+    right: 0;
+    bottom: 0;
+    background: url("./assets/backgroundElement.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.035;
+    z-index: 1;
+}
+header {
+    width: 100%;
+    min-height: 55px;
+    max-height: 65px;
+    background: #151515;
+    z-index: 100;
+}
+
+header > p {
+    margin-left: 15px;
+    color: var(--main);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+/*********************************/
+/*********   REACT PART  *********/
+/*********************************/
+
+#root {
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+}
+
+/*********************************/
+/**********   SIDE BAR  **********/
+/*********************************/
+
+#sidebar {
+    width: 15vw;
+    background: #232323;
+    border-right: 2px solid black;
+    height: calc(100vh - 55px);
+    overflow: auto; /* Active le défilement */
+    scrollbar-width: none;
+    flex-shrink: 0; /* Empêche flexbox de réduire la largeur */
+}
+
+#sidebar h1 {
+    display: flex;
+    background: #343333;
+    border-radius: 15px;
+    margin: 15px;
+    padding-left: 25px;
+    width: auto;
+    height: 45px;
+    font-size: 15px;
+    align-items: center;
+}
+
+#sidebar li {
+    list-style-type: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#sidebar li:hover {
+    cursor: pointer;
+    list-style-type: none;
+    color: var(--main);
+    transition: all 0.2s ease;
+}
+
+.active {
+    color: var(--main);
+}
+
+/*********************************/
+/************   MAIN  ************/
+/*********************************/
+
+#main {
+    width: 55%;
+    margin: 15px;
+    z-index: 2;
+}
+
+#main h1 {
+    color: var(--main);
+    text-decoration: underline;
+}
+
+#main #description {
+    border-radius: 15px;
+    background: #474747;
+    padding: 15px;
+}
+
+#main table {
+    border-collapse: collapse;
+}
+
+#main table tr td {
+    border: 1px solid rgba(73, 73, 73, 0.637);
+    padding: 5px;
+}
+
+#main table tr {
+    background-color: none;
+}
+
+#main table tr:nth-child(even) {
+    background-color: #2e2e2e;
+}
+
+.bash {
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.bash p {
+    padding: 0px 7px 0px 15px;
+}
+
+.bash .top {
+    flex: 1;
+    background-color: #9b9b9b;
+}
+
+.bash .bottom {
+    flex: 1;
+    background-color: #23232b;
+}
+
+/* Not responsive for the moment ! */

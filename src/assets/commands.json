@@ -1,0 +1,106 @@
+[
+    {
+        "name": "pipe",
+        "type": "symbol",
+        "description": "A powerful text-processing tool for pattern scanning and data extraction.",
+        "long_description": "The cat command in Linux, short for \"concatenate,\" is  used to display the contents of files directly in the terminal. It reads files sequentially and outputs their contents to the standard output.  It can also be used to combine files or create new ones by redirecting  input. Overall, cat is a simple and essential tool for viewing and manipulating text files in Linux.",
+        "syntax": "cat [OPTION]... [FILE]...",
+        "details": [
+            "FILE: The file(s) to display or process. If no file is specified, cat reads from standard input (e.g., keyboard input).",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ]
+    },
+    {
+        "name": "awk",
+        "type": "command",
+        "description": "A powerful pattern scanning and processing language.",
+        "long_description": "The awk command in Linux is a versatile programming language designed for pattern scanning and processing. It is commonly used for extracting and manipulating data from text files or streams. awk processes input line by line, splitting each line into fields based on a delimiter (default is whitespace), and allows users to perform actions based on patterns or conditions.",
+        "syntax": "awk [OPTION]... 'PATTERN { ACTION }' [FILE]...",
+        "details": [
+            "PATTERN: A condition or pattern to match lines in the input.",
+            "ACTION: Commands to execute when the pattern matches.",
+            "FILE: The file(s) to process. If no file is specified, awk reads from standard input."
+        ],
+        "options": {
+            "-F": "Specify the field separator (e.g., -F: for colon-separated fields).",
+            "-v": "Assign a value to a variable (e.g., -v var=value).",
+            "-f": "Read the awk script from a file.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "cat",
+        "type": "command",
+        "description": "A command to display or concatenate file contents.",
+        "long_description": "The cat command in Linux, short for \"concatenate,\" is used to display the contents of files directly in the terminal. It reads files sequentially and outputs their contents to the standard output. It can also be used to combine files or create new ones by redirecting input. Overall, cat is a simple and essential tool for viewing and manipulating text files in Linux.",
+        "syntax": "cat [OPTION]... [FILE]...",
+        "details": [
+            "FILE: The file(s) to display or process. If no file is specified, cat reads from standard input (e.g., keyboard input).",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-n": "Number all output lines (including empty lines).",
+            "-b": "Number only non-empty output lines.",
+            "-s": "Squeeze multiple adjacent empty lines into a single empty line.",
+            "-E": "Display a $ at the end of each line.",
+            "-T": "Display tab characters as ^I.",
+            "-A": "Equivalent to -vET (shows non-printing characters, end-of-line, and tabs).",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "cut",
+        "type": "command",
+        "description": "A command to extract sections from lines of files.",
+        "long_description": "The cut command in Linux is used to extract specific sections (columns or fields) from each line of a file or input. It is particularly useful for working with structured data, such as CSV files or output from other commands. cut can extract by byte position, character position, or field (delimited by a separator).",
+        "syntax": "cut [OPTION]... [FILE]...",
+        "details": [
+            "FILE: The file(s) to process. If no file is specified, cut reads from standard input.",
+            "OPTION: Specifies how to extract sections (e.g., by fields, characters, or bytes)."
+        ],
+        "options": {
+            "-c": "Extract by character position (e.g., -c 1-5 extracts the first 5 characters).",
+            "-f": "Extract by field (e.g., -f 2 extracts the second field).",
+            "-d": "Specify a delimiter for field extraction (default is tab).",
+            "--complement": "Invert the selection (extract everything except the specified sections).",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "cd",
+        "type": "command",
+        "description": "A command to change the current working directory.",
+        "long_description": "The cd command in Linux is used to change the current working directory of the shell. It is one of the most frequently used commands, allowing users to navigate the filesystem. If no directory is specified, cd changes to the user's home directory.",
+        "syntax": "cd [DIRECTORY]",
+        "details": [
+            "DIRECTORY: The directory to change to. Can be an absolute path, relative path, or special symbols like ~ (home) or .. (parent directory)."
+        ],
+        "options": {
+            "-L": "Follow symbolic links (default behavior).",
+            "-P": "Use the physical directory structure without following symbolic links.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "chmod",
+        "type": "command",
+        "description": "A command to change file or directory permissions.",
+        "long_description": "The chmod command in Linux is used to change the permissions of files or directories. Permissions control who can read, write, or execute a file. chmod can modify permissions using symbolic notation (e.g., u+rwx) or octal notation (e.g., 755).",
+        "syntax": "chmod [OPTION]... MODE[,MODE]... FILE...",
+        "details": [
+            "MODE: The permissions to set, either in symbolic or octal format.",
+            "FILE: The file(s) or directory(ies) to modify."
+        ],
+        "options": {
+            "-R": "Recursively change permissions for directories and their contents.",
+            "-v": "Display a message for each file processed.",
+            "-c": "Display a message only if changes are made.",
+            "--reference=FILE": "Use the permissions of a reference file.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    }
+]
