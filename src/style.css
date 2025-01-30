@@ -2,6 +2,7 @@
 
 :root {
     --main: #ffc60a;
+    --secondary: #343333;
 }
 
 ::selection {
@@ -13,9 +14,6 @@ body {
     background: #1d1d1d;
     margin: 0;
     padding: 0;
-    display: flex;
-    place-items: flex-start;
-    flex-direction: column;
     font-family: "Inter", serif;
     color: white;
     overflow: hidden;
@@ -31,22 +29,34 @@ body::after {
     background: url("./assets/backgroundElement.png");
     background-size: cover;
     background-repeat: no-repeat;
-    opacity: 0.035;
+    opacity: 0.025;
     z-index: 1;
 }
 header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     min-height: 55px;
     max-height: 65px;
     background: #151515;
     z-index: 100;
+    position: relative;
 }
 
 header > p {
-    margin-left: 15px;
+    position: absolute;
+    left: 15px;
     color: var(--main);
     font-weight: bold;
     font-size: 25px;
+}
+
+main {
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
 }
 
 /*********************************/
@@ -56,7 +66,27 @@ header > p {
 #root {
     display: flex;
     width: 100vw;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+/*********************************/
+/***********   HEADER  ***********/
+/*********************************/
+
+#searchBar {
+    display: flex;
+    width: 25%;
+    background: var(--secondary);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+#searchBar input {
+    color: white;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
 }
 
 /*********************************/
@@ -68,14 +98,14 @@ header > p {
     background: #232323;
     border-right: 2px solid black;
     height: calc(100vh - 55px);
-    overflow: auto; /* Active le défilement */
+    overflow: auto;
     scrollbar-width: none;
-    flex-shrink: 0; /* Empêche flexbox de réduire la largeur */
+    flex-shrink: 0;
 }
 
 #sidebar h1 {
     display: flex;
-    background: #343333;
+    background: var(--secondary);
     border-radius: 15px;
     margin: 15px;
     padding-left: 25px;
@@ -121,6 +151,7 @@ header > p {
     border-radius: 15px;
     background: #474747;
     padding: 15px;
+    box-shadow: 1.5px 1.5px 5px #474747;
 }
 
 #main table {
@@ -152,13 +183,17 @@ header > p {
 }
 
 .bash .top {
-    flex: 1;
+    height: 35px;
     background-color: #9b9b9b;
 }
 
 .bash .bottom {
-    flex: 1;
     background-color: #23232b;
+}
+
+.bash div {
+    display: flex;
+    align-items: center;
 }
 
 /* Not responsive for the moment ! */
