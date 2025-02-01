@@ -5,7 +5,7 @@ import commands from "./assets/commands.json";
 import Sidebar from "./Components/Sidebar";
 import DocPage from "./Components/DocPage";
 import { Command } from "./assets/types";
-import SearchBar from "./Components/searchBar";
+import SearchBar from "./Components/SearchBar";
 
 const App: React.FC = () => {
     const [cmd, setCmd] = useState<string>("pipe");
@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
     return (
         <>
-            <SearchBar></SearchBar>
+            <SearchBar commands={commands} cmd={cmd} setCmd={setCmd} />
             <main>
                 <Sidebar commands={commands} cmd={cmd} setCmd={setCmd} />
                 <DocPage cmdData={cmdData} />

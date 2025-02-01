@@ -75,10 +75,26 @@ main {
 
 #searchBar {
     display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc((100% / 2) - 35%);
+    display: flex;
     width: 25%;
+    height: auto;
     background: var(--secondary);
     padding: 10px;
     border-radius: 20px;
+    transition: all 1.5s ease;
+}
+
+#searchBarExpand {
+    padding: 2%;
+    max-height: 40vh;
+    overflow-y: scroll;
+}
+
+#searchBarExpand p {
+    cursor: pointer;
 }
 
 #searchBar input {
@@ -88,6 +104,12 @@ main {
     border: none;
     outline: none;
 }
+
+/* #searchBar.active {
+    min-height: 250px;
+    height: 25%;
+    transition: all 1.5s ease;
+} */
 
 /*********************************/
 /**********   SIDE BAR  **********/
@@ -128,7 +150,9 @@ main {
     transition: all 0.2s ease;
 }
 
-.active {
+p.active,
+h1.active,
+pre.active {
     color: var(--main);
 }
 
