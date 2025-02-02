@@ -5,10 +5,6 @@
     --secondary: #343333;
 }
 
-::selection {
-    color: var(--main);
-}
-
 body {
     position: relative;
     background: #1d1d1d;
@@ -56,6 +52,7 @@ header > p {
 main {
     display: flex;
     width: 100vw;
+    height: auto;
     flex-direction: row;
 }
 
@@ -78,7 +75,6 @@ main {
     flex-direction: column;
     position: absolute;
     top: calc((100% / 2) - 35%);
-    display: flex;
     width: 25%;
     height: auto;
     background: var(--secondary);
@@ -105,11 +101,41 @@ main {
     outline: none;
 }
 
-/* #searchBar.active {
-    min-height: 250px;
-    height: 25%;
-    transition: all 1.5s ease;
-} */
+.searchBar-item {
+    margin: 10px;
+    transition: transform 0.1s ease;
+}
+
+.searchBar-item:hover {
+    transform: scale(1.02);
+}
+
+.searchBar-item > p {
+    margin: 0px;
+}
+
+.searchBar-item-cmd {
+    font-weight: bold;
+}
+
+.searchBar-item-detail {
+    color: gray;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.menu-button {
+    position: absolute;
+    display: none;
+    left: 5%;
+    height: 65%;
+    aspect-ratio: 1 / 1;
+}
+
+.menu-button > svg {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+}
 
 /*********************************/
 /**********   SIDE BAR  **********/
@@ -117,6 +143,7 @@ main {
 
 #sidebar {
     width: 15vw;
+    min-width: 200px;
     background: #232323;
     border-right: 2px solid black;
     height: calc(100vh - 55px);
@@ -161,9 +188,21 @@ pre.active {
 /*********************************/
 
 #main {
+    padding: 15px;
     width: 55%;
     margin: 15px;
     z-index: 2;
+}
+
+#main {
+    height: calc(100vh - 100px);
+    overflow: auto; /* Enable scrolling */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+}
+
+#main::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
 }
 
 #main h1 {
@@ -220,4 +259,32 @@ pre.active {
     align-items: center;
 }
 
-/* Not responsive for the moment ! */
+/* Mobile responsive design */
+@media only screen and (max-width: 768px) {
+    #sidebar {
+        display: none;
+        width: 100%;
+        height: auto;
+    }
+
+    #sidebar.active {
+        display: block;
+    }
+
+    #searchBar {
+        width: 65%;
+        right: 5%;
+    }
+
+    header > p {
+        display: none;
+    }
+
+    #main {
+        width: 85%;
+    }
+
+    .menu-button {
+        display: block;
+    }
+}

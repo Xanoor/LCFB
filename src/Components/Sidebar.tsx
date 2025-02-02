@@ -12,6 +12,16 @@ function Sidebar({ commands, cmd, setCmd }: SidebarProps) {
         (element) => element.type === "command"
     );
 
+    const handleOnClick = (cmdName: string) => {
+        setCmd(cmdName);
+        if (window.innerWidth < 768) {
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar) {
+                sidebar.classList.remove("active");
+            }
+        }
+    };
+
     return (
         <div id="sidebar">
             <h1>Symbols</h1>
@@ -20,7 +30,7 @@ function Sidebar({ commands, cmd, setCmd }: SidebarProps) {
                     <li key={index}>
                         <pre
                             className={element.name === cmd ? "active" : ""}
-                            onClick={() => setCmd(element.name)}
+                            onClick={() => handleOnClick(element.name)}
                         >
                             {element.name}
                         </pre>
@@ -33,7 +43,7 @@ function Sidebar({ commands, cmd, setCmd }: SidebarProps) {
                     <li key={index}>
                         <pre
                             className={element.name === cmd ? "active" : ""}
-                            onClick={() => setCmd(element.name)}
+                            onClick={() => handleOnClick(element.name)}
                         >
                             {element.name}
                         </pre>

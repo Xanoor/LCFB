@@ -40,65 +40,348 @@
             "OPTION: Optional flags to modify the behavior of the command."
         ],
         "options": {
-            "-n": "Number all output lines (including empty lines).",
-            "-b": "Number only non-empty output lines.",
-            "-s": "Squeeze multiple adjacent empty lines into a single empty line.",
-            "-E": "Display a $ at the end of each line.",
-            "-T": "Display tab characters as ^I.",
-            "-A": "Equivalent to -vET (shows non-printing characters, end-of-line, and tabs).",
+            "-n": "Number all output lines.",
+            "-b": "Number nonempty output lines.",
+            "-s": "Suppress repeated empty output lines.",
+            "-v": "Display non-printing characters.",
             "--help": "Display help information and exit.",
             "--version": "Display version information and exit."
         }
     },
     {
-        "name": "cut",
+        "name": "kill",
         "type": "command",
-        "description": "A command to extract sections from lines of files.",
-        "long_description": "The cut command in Linux is used to extract specific sections (columns or fields) from each line of a file or input. It is particularly useful for working with structured data, such as CSV files or output from other commands. cut can extract by byte position, character position, or field (delimited by a separator).",
-        "syntax": "cut [OPTION]... [FILE]...",
+        "description": "Send a signal to a process.",
+        "long_description": "The kill command in Linux is used to send a signal to a process, usually to terminate it. It can be used to stop processes that are running in the background or to send other signals to processes.",
+        "syntax": "kill [OPTION]... PID...",
         "details": [
-            "FILE: The file(s) to process. If no file is specified, cut reads from standard input.",
-            "OPTION: Specifies how to extract sections (e.g., by fields, characters, or bytes)."
+            "PID: The process ID(s) to send the signal to.",
+            "OPTION: Optional flags to modify the behavior of the command."
         ],
         "options": {
-            "-c": "Extract by character position (e.g., -c 1-5 extracts the first 5 characters).",
-            "-f": "Extract by field (e.g., -f 2 extracts the second field).",
-            "-d": "Specify a delimiter for field extraction (default is tab).",
-            "--complement": "Invert the selection (extract everything except the specified sections).",
+            "-l": "List all signal names.",
+            "-s": "Specify the signal to send.",
+            "-n": "Specify the signal number to send.",
             "--help": "Display help information and exit.",
             "--version": "Display version information and exit."
         }
     },
     {
-        "name": "cd",
+        "name": "less",
         "type": "command",
-        "description": "A command to change the current working directory.",
-        "long_description": "The cd command in Linux is used to change the current working directory of the shell. It is one of the most frequently used commands, allowing users to navigate the filesystem. If no directory is specified, cd changes to the user's home directory.",
-        "syntax": "cd [DIRECTORY]",
+        "description": "View file contents interactively.",
+        "long_description": "The less command in Linux is used to view the contents of files interactively. It allows users to scroll through the file, search for text, and navigate through the file using keyboard commands.",
+        "syntax": "less [OPTION]... [FILE]...",
         "details": [
-            "DIRECTORY: The directory to change to. Can be an absolute path, relative path, or special symbols like ~ (home) or .. (parent directory)."
+            "FILE: The file(s) to view.",
+            "OPTION: Optional flags to modify the behavior of the command."
         ],
         "options": {
-            "-L": "Follow symbolic links (default behavior).",
-            "-P": "Use the physical directory structure without following symbolic links.",
-            "--help": "Display help information and exit."
+            "-N": "Show line numbers.",
+            "-S": "Chop long lines.",
+            "-X": "Disable termcap initialization.",
+            "-F": "Exit if the output fits on one screen.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
         }
     },
     {
-        "name": "chmod",
+        "name": "ln",
         "type": "command",
-        "description": "A command to change file or directory permissions.",
-        "long_description": "The chmod command in Linux is used to change the permissions of files or directories. Permissions control who can read, write, or execute a file. chmod can modify permissions using symbolic notation (e.g., u+rwx) or octal notation (e.g., 755).",
-        "syntax": "chmod [OPTION]... MODE[,MODE]... FILE...",
+        "description": "Create hard and symbolic links.",
+        "long_description": "The ln command in Linux is used to create hard and symbolic links to files and directories. Hard links are direct references to the file's data, while symbolic links are pointers to the file's location.",
+        "syntax": "ln [OPTION]... TARGET [LINK_NAME]",
         "details": [
-            "MODE: The permissions to set, either in symbolic or octal format.",
-            "FILE: The file(s) or directory(ies) to modify."
+            "TARGET: The file or directory to link to.",
+            "LINK_NAME: The name of the link to create.",
+            "OPTION: Optional flags to modify the behavior of the command."
         ],
         "options": {
-            "-R": "Recursively change permissions for directories and their contents.",
-            "-v": "Display a message for each file processed.",
-            "-c": "Display a message only if changes are made.",
-            "--reference=FILE": "Use the permissions of a reference file.",
+            "-s": "Make symbolic links instead of hard links.",
+            "-f": "Remove existing destination files.",
+            "-n": "Do not dereference symbolic links.",
+            "-v": "Print name of each linked file.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "ls",
+        "type": "command",
+        "description": "List directory contents.",
+        "long_description": "The ls command in Linux is used to list the contents of directories. It provides information about files and directories, including their names, sizes, permissions, and more.",
+        "syntax": "ls [OPTION]... [FILE]...",
+        "details": [
+            "FILE: The file(s) or directory(ies) to list.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-a": "Include hidden files.",
+            "-l": "Use a long listing format.",
+            "-h": "With -l, print sizes in human readable format.",
+            "-r": "Reverse order while sorting.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "man",
+        "type": "command",
+        "description": "Display the manual for a command.",
+        "long_description": "The man command in Linux is used to display the manual pages for commands. It provides detailed information about the command, including its syntax, options, and examples.",
+        "syntax": "man [OPTION]... [COMMAND]...",
+        "details": [
+            "COMMAND: The command to display the manual for.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-k": "Search the short descriptions and manual page names for the keyword.",
+            "-f": "Display only the first page found.",
+            "-a": "Display all pages matching the command.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "mkdir",
+        "type": "command",
+        "description": "Create directories.",
+        "long_description": "The mkdir command in Linux is used to create directories. It can create single or multiple directories at once and set permissions for the new directories.",
+        "syntax": "mkdir [OPTION]... DIRECTORY...",
+        "details": [
+            "DIRECTORY: The directory(ies) to create.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-p": "Create parent directories as needed.",
+            "-m": "Set file mode (permissions).",
+            "-v": "Print a message for each created directory.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "mv",
+        "type": "command",
+        "description": "Move or rename files and directories.",
+        "long_description": "The mv command in Linux is used to move or rename files and directories. It can move files to a different directory or rename them within the same directory.",
+        "syntax": "mv [OPTION]... SOURCE... DIRECTORY",
+        "details": [
+            "SOURCE: The file(s) or directory(ies) to move or rename.",
+            "DIRECTORY: The destination directory.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-f": "Do not prompt before overwriting.",
+            "-i": "Prompt before overwriting.",
+            "-n": "Do not overwrite an existing file.",
+            "-v": "Explain what is being done.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "ps",
+        "type": "command",
+        "description": "Report a snapshot of current processes.",
+        "long_description": "The ps command in Linux is used to report a snapshot of the current processes. It provides information about the processes running on the system, including their process IDs, user IDs, CPU usage, memory usage, and more.",
+        "syntax": "ps [OPTION]...",
+        "details": [
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-e": "Select all processes.",
+            "-f": "Do full-format listing.",
+            "-u": "Display user-oriented format.",
+            "-x": "Include processes without a controlling terminal.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "pwd",
+        "type": "command",
+        "description": "Print the current working directory.",
+        "long_description": "The pwd command in Linux is used to print the current working directory. It displays the full path of the directory you are currently in.",
+        "syntax": "pwd",
+        "details": [],
+        "options": {
+            "-L": "Print the value of $PWD if it names the current working directory.",
+            "-P": "Print the physical directory, without any symbolic links.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "rm",
+        "type": "command",
+        "description": "Remove files or directories.",
+        "long_description": "The rm command in Linux is used to remove files or directories. It can delete single files, multiple files, or entire directories.",
+        "syntax": "rm [OPTION]... FILE...",
+        "details": [
+            "FILE: The file(s) or directory(ies) to remove.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-f": "Ignore nonexistent files and arguments, never prompt.",
+            "-i": "Prompt before every removal.",
+            "-r": "Remove directories and their contents recursively.",
+            "-v": "Explain what is being done.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "rmdir",
+        "type": "command",
+        "description": "Remove empty directories.",
+        "long_description": "The rmdir command in Linux is used to remove empty directories. It can only delete directories that are empty.",
+        "syntax": "rmdir [OPTION]... DIRECTORY...",
+        "details": [
+            "DIRECTORY: The directory(ies) to remove.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-p": "Remove DIRECTORY and its ancestors.",
+            "-v": "Output a diagnostic for every directory processed.",
+            "--ignore-fail-on-non-empty": "Ignore each failure that is solely because a directory is non-empty.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "scp",
+        "type": "command",
+        "description": "Secure copy (remote file copy program).",
+        "long_description": "The scp command in Linux is used to securely copy files between hosts on a network. It uses SSH for data transfer and provides the same authentication and security as SSH.",
+        "syntax": "scp [OPTION]... [USER@]SRC_HOST:]SRC_FILE [USER@]DEST_HOST:]DEST_FILE",
+        "details": [
+            "USER: The user to authenticate as.",
+            "SRC_HOST: The source host.",
+            "SRC_FILE: The source file.",
+            "DEST_HOST: The destination host.",
+            "DEST_FILE: The destination file.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-r": "Recursively copy entire directories.",
+            "-p": "Preserve file attributes.",
+            "-q": "Suppress non-error messages.",
+            "-C": "Enable compression.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "sed",
+        "type": "command",
+        "description": "Stream editor for filtering and transforming text.",
+        "long_description": "The sed command in Linux is a stream editor used for filtering and transforming text. It can perform basic text transformations on an input stream (a file or input from a pipeline).",
+        "syntax": "sed [OPTION]... {script-only-if-no-other-script} [input-file]...",
+        "details": [
+            "input-file: The file(s) to process.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-n": "Suppress automatic printing of pattern space.",
+            "-e": "Add the script to the commands to be executed.",
+            "-f": "Add the contents of script-file to the commands to be executed.",
+            "-i": "Edit files in place.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "ssh",
+        "type": "command",
+        "description": "OpenSSH SSH client (remote login program).",
+        "long_description": "The ssh command in Linux is used to securely log into a remote machine and execute commands on it. It is the most common way to access remote Linux servers.",
+        "syntax": "ssh [OPTION]... [USER@]HOST",
+        "details": [
+            "USER: The user to authenticate as.",
+            "HOST: The remote host to connect to.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-p": "Port to connect to on the remote host.",
+            "-i": "File from which the identity (private key) for public key authentication is read.",
+            "-v": "Verbose mode.",
+            "-C": "Request compression of all data.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "sudo",
+        "type": "command",
+        "description": "Execute a command as another user.",
+        "long_description": "The sudo command in Linux is used to execute a command as another user, typically the superuser. It allows users to run programs with the security privileges of another user.",
+        "syntax": "sudo [OPTION]... COMMAND",
+        "details": [
+            "COMMAND: The command to execute.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-u": "Run the command as a specified user.",
+            "-k": "Invalidate the user's cached credentials.",
+            "-b": "Run the command in the background.",
+            "-E": "Preserve the user's environment.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "tail",
+        "type": "command",
+        "description": "Output the last part of files.",
+        "long_description": "The tail command in Linux is used to output the last part of files. By default, it displays the last 10 lines of each file. It can be used to monitor the end of a file in real-time.",
+        "syntax": "tail [OPTION]... [FILE]...",
+        "details": [
+            "FILE: The file(s) to display the last part of.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-f": "Output appended data as the file grows.",
+            "-n": "Output the last K lines, instead of the last 10.",
+            "-q": "Never output headers giving file names.",
+            "-v": "Always output headers giving file names.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "tar",
+        "type": "command",
+        "description": "An archiving utility.",
+        "long_description": "The tar command in Linux is used to create, maintain, modify, and extract files from an archive file (commonly known as a tarball). It supports various compression methods.",
+        "syntax": "tar [OPTION]... [FILE]...",
+        "details": [
+            "FILE: The file(s) to archive or extract.",
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-c": "Create a new archive.",
+            "-x": "Extract files from an archive.",
+            "-t": "List the contents of an archive.",
+            "-z": "Filter the archive through gzip.",
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "top",
+        "type": "command",
+        "description": "Display Linux tasks.",
+        "long_description": "The top command in Linux is used to display real-time information about the system's running processes. It provides a dynamic view of the system's performance, including CPU and memory usage.",
+        "syntax": "top [OPTION]...",
+        "details": [
+            "OPTION: Optional flags to modify the behavior of the command."
+        ],
+        "options": {
+            "-b": "Batch mode operation.",
+            "-n": "Number of iterations in batch mode.",
+            "-d": "Delay time between updates.",
+            "-p": "Monitor only processes with specified process IDs.",
             "--help": "Display help information and exit.",
             "--version": "Display version information and exit."
         }
