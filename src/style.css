@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
     --main: #ffc60a;
     --secondary: #343333;
@@ -146,9 +146,9 @@ main {
     min-width: 200px;
     background: #232323;
     border-right: 2px solid black;
-    height: calc(100vh - 55px);
-    overflow: auto;
-    scrollbar-width: none;
+    max-height: calc(100vh - 55px);
+    overflow-y: auto;
+    scrollbar-width: thin;
     flex-shrink: 0;
 }
 
@@ -181,6 +181,10 @@ p.active,
 h1.active,
 pre.active {
     color: var(--main);
+}
+
+#sidebar pre {
+    font-family: "Montserrat", serif;
 }
 
 /*********************************/
@@ -269,6 +273,8 @@ pre.active {
 
     #sidebar.active {
         display: block;
+        overflow-y: auto;
+        z-index: 2;
     }
 
     #searchBar {
