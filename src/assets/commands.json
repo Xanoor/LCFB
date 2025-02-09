@@ -3,12 +3,96 @@
         "name": "pipe",
         "type": "symbol",
         "description": "A powerful text-processing tool for pattern scanning and data extraction.",
-        "long_description": "The cat command in Linux, short for \"concatenate,\" is  used to display the contents of files directly in the terminal. It reads files sequentially and outputs their contents to the standard output.  It can also be used to combine files or create new ones by redirecting  input. Overall, cat is a simple and essential tool for viewing and manipulating text files in Linux.",
+        "long_description": "The pipe (|) in Linux is a powerful tool for chaining commands together. It takes the output of one command and uses it as the input for another. This allows for complex data processing and manipulation directly in the terminal. Pipes are commonly used for tasks like filtering, sorting, and transforming data.",
         "syntax": "cat [OPTION]... [FILE]...",
         "details": [
-            "FILE: The file(s) to display or process. If no file is specified, cat reads from standard input (e.g., keyboard input).",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "Pipes are used to connect the output of one command to the input of another.",
+            "They are essential for creating command chains that process data sequentially.",
+            "Pipes can be combined with other shell features like redirection and background processing.",
+            "Common use cases include filtering lists, processing text files, and aggregating data."
         ]
+    },
+    {
+        "name": "alias",
+        "type": "command",
+        "description": "Create or list command aliases.",
+        "long_description": "The alias command allows users to create custom shortcuts for commands. This is particularly useful for simplifying complex or frequently used commands. Aliases can be defined in the shell configuration file (e.g., .bashrc or .zshrc) to persist across sessions. Users can also list all defined aliases or remove specific ones using the unalias command.",
+        "syntax": "alias [name]='command'",
+        "details": [
+            "Aliases are user-defined shortcuts for commands.",
+            "They can include options and arguments to streamline repetitive tasks.",
+            "Aliases are session-specific unless added to a shell configuration file.",
+            "Use the unalias command to remove an alias."
+        ],
+        "options": {
+            "-p": "Print all currently defined aliases.",
+            "--help": "Display help information and exit.",
+            "--all": "List all aliases, including those defined by the system."
+        }
+    },
+    {
+        "name": "apropos",
+        "type": "command",
+        "description": "Search for commands related to a keyword.",
+        "long_description": "The apropos command searches the manual page descriptions for a given keyword and lists relevant commands. It is useful when you do not know the exact command name but know its function.",
+        "syntax": "apropos [keyword]",
+        "details": [
+            "keyword: A word related to the command you are searching for."
+        ],
+        "options": {
+            "-a": "Match all keywords instead of any.",
+            "-e": "Use exact keyword match.",
+            "-s [section]": "Search within a specific manual section.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "arch",
+        "type": "command",
+        "description": "Display the machine architecture.",
+        "long_description": "The arch command prints the computer's architecture type (e.g., x86_64, i686, arm). It is useful for determining compatibility when installing software or compiling programs.",
+        "syntax": "arch",
+        "details": [
+            "No arguments are required.",
+            "Outputs the system architecture."
+        ],
+        "options": {
+            "--help": "Display help information and exit.",
+            "--version": "Display version information and exit."
+        }
+    },
+    {
+        "name": "ar",
+        "type": "command",
+        "description": "Create, modify, and extract from archives.",
+        "long_description": "The ar command is used to create, update, extract, and manipulate archive files, typically used for static libraries in Linux. These archives usually contain compiled object files.",
+        "syntax": "ar [options] archive-file file(s)",
+        "details": [
+            "archive-file: The archive to create or modify.",
+            "file(s): The files to be added to or extracted from the archive."
+        ],
+        "options": {
+            "r": "Insert files into the archive.",
+            "x": "Extract files from the archive.",
+            "t": "List the contents of the archive.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "at",
+        "type": "command",
+        "description": "Schedule a command to run at a later time.",
+        "long_description": "The at command schedules commands for execution at a specific time in the future. It runs the specified command once at the given time.",
+        "syntax": "at [TIME]",
+        "details": [
+            "TIME: The time at which the command should run (e.g., 12:30, midnight, noon, now + 1 hour)."
+        ],
+        "options": {
+            "-f": "Read commands from a file instead of standard input.",
+            "-l": "List the scheduled jobs.",
+            "-r": "Remove a scheduled job.",
+            "--help": "Display help information and exit."
+        }
     },
     {
         "name": "awk",
@@ -30,360 +114,1047 @@
         }
     },
     {
-        "name": "cat",
+        "name": "basename",
         "type": "command",
-        "description": "A command to display or concatenate file contents.",
-        "long_description": "The cat command in Linux, short for \"concatenate,\" is used to display the contents of files directly in the terminal. It reads files sequentially and outputs their contents to the standard output. It can also be used to combine files or create new ones by redirecting input. Overall, cat is a simple and essential tool for viewing and manipulating text files in Linux.",
-        "syntax": "cat [OPTION]... [FILE]...",
+        "description": "Extract the filename from a path.",
+        "long_description": "The basename command removes the directory path from a file path and returns only the filename. It is useful in scripts when processing file paths.",
+        "syntax": "basename [path] [suffix]",
         "details": [
-            "FILE: The file(s) to display or process. If no file is specified, cat reads from standard input (e.g., keyboard input).",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "path: The full file path.",
+            "suffix: An optional suffix to remove from the filename."
         ],
         "options": {
+            "-a": "Process multiple arguments.",
+            "-s": "Remove a specified suffix from the filename.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "bc",
+        "type": "command",
+        "description": "A command-line calculator with arbitrary precision.",
+        "long_description": "The bc command is an interactive calculator that supports floating-point arithmetic, variables, and functions. It can be used directly from the command line or within scripts for mathematical operations.",
+        "syntax": "bc [options]",
+        "details": [
+            "Reads input from standard input or files.",
+            "Supports advanced mathematical calculations."
+        ],
+        "options": {
+            "-l": "Enable standard math library functions.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "bg",
+        "type": "command",
+        "description": "Resume a suspended job in the background.",
+        "long_description": "The bg command resumes a paused (suspended) job and runs it in the background. It is used when managing multiple processes in a shell session.",
+        "syntax": "bg [job_spec]",
+        "details": ["job_spec: The job ID or job number to resume."],
+        "options": {
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "bzip2",
+        "type": "command",
+        "description": "Compress files using the Burrows-Wheeler block sorting algorithm.",
+        "long_description": "The bzip2 command compresses files using a more efficient algorithm than gzip. It produces .bz2 files, which are smaller in size compared to gzip compression.",
+        "syntax": "bzip2 [options] file",
+        "details": ["file: The file to compress."],
+        "options": {
+            "-d": "Decompress a .bz2 file.",
+            "-k": "Keep the original file after compression.",
+            "-c": "Write output to standard output.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "cal",
+        "type": "command",
+        "description": "Display a calendar in the terminal.",
+        "long_description": "The cal command prints a simple calendar for the current month by default. It can display a specific month, year, or an entire year.",
+        "syntax": "cal [options] [month] [year]",
+        "details": [
+            "month: The month (1-12) to display.",
+            "year: The year to display."
+        ],
+        "options": {
+            "-y": "Show the entire year.",
+            "-m [month]": "Display a specific month.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "cat",
+        "type": "command",
+        "description": "Concatenate and display file contents.",
+        "long_description": "The cat command reads files sequentially and outputs their content to the standard output. It is commonly used for viewing, merging, and creating files.",
+        "syntax": "cat [options] [file...]",
+        "details": ["file: One or more files to display."],
+        "options": {
             "-n": "Number all output lines.",
-            "-b": "Number nonempty output lines.",
-            "-s": "Suppress repeated empty output lines.",
-            "-v": "Display non-printing characters.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-E": "Display $ at the end of each line.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "cd",
+        "type": "command",
+        "description": "Change the current working directory.",
+        "long_description": "The cd command is used to navigate between directories in a Linux system. It allows users to move to different locations within the filesystem.",
+        "syntax": "cd [directory]",
+        "details": ["directory: The path to the directory to move to."],
+        "options": {
+            "..": "Move to the parent directory.",
+            "-": "Return to the previous directory.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "chgrp",
+        "type": "command",
+        "description": "Change the group ownership of a file or directory.",
+        "long_description": "The chgrp command changes the group associated with a file or directory. It is useful for managing file permissions in a multi-user environment.",
+        "syntax": "chgrp [options] group file",
+        "details": [
+            "group: The new group name or ID.",
+            "file: The file or directory to modify."
+        ],
+        "options": {
+            "-R": "Apply changes recursively to directories.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "chmod",
+        "type": "command",
+        "description": "Change file permissions.",
+        "long_description": "The chmod command modifies file and directory permissions. It allows users to grant or restrict read, write, and execute permissions.",
+        "syntax": "chmod [options] mode file",
+        "details": [
+            "mode: The new permission settings (e.g., 755, u+r, g-w).",
+            "file: The file or directory to modify."
+        ],
+        "options": {
+            "-R": "Apply changes recursively to directories.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "chown",
+        "type": "command",
+        "description": "Change file owner and group.",
+        "long_description": "The chown command changes the ownership of files and directories. It allows administrators to assign new owners and groups to files.",
+        "syntax": "chown [options] owner[:group] file",
+        "details": [
+            "owner: The new owner's username or UID.",
+            "group: The new group (optional).",
+            "file: The file or directory to modify."
+        ],
+        "options": {
+            "-R": "Apply changes recursively to directories.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "chroot",
+        "type": "command",
+        "description": "Run a command or shell in a modified root directory.",
+        "long_description": "The chroot command changes the root directory for a process and its children. This is often used for creating isolated environments, such as system recovery or testing.",
+        "syntax": "chroot [new-root] [command]",
+        "details": [
+            "new-root: The new root directory.",
+            "command: The command to execute within the new root."
+        ],
+        "options": {
+            "--userspec": "Run as a specific user:group.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "clear",
+        "type": "command",
+        "description": "Clear the terminal screen.",
+        "long_description": "The clear command erases all output from the terminal screen, providing a clean workspace. It does not delete command history.",
+        "syntax": "clear",
+        "details": ["No arguments are required."],
+        "options": {
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "cmp",
+        "type": "command",
+        "description": "Compare two files byte by byte.",
+        "long_description": "The cmp command checks if two files are identical. If there is a difference, it outputs the byte and line number where they first differ.",
+        "syntax": "cmp [options] file1 file2",
+        "details": [
+            "file1: The first file to compare.",
+            "file2: The second file to compare."
+        ],
+        "options": {
+            "-l": "Display differences in a detailed format.",
+            "-s": "Suppress all output; only return an exit status.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "comm",
+        "type": "command",
+        "description": "Compare two sorted files line by line.",
+        "long_description": "The comm command takes two sorted files and outputs three columns: lines unique to file1, lines unique to file2, and common lines.",
+        "syntax": "comm [options] file1 file2",
+        "details": [
+            "file1: The first sorted file.",
+            "file2: The second sorted file."
+        ],
+        "options": {
+            "-1": "Suppress lines unique to file1.",
+            "-2": "Suppress lines unique to file2.",
+            "-3": "Suppress lines common to both files.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "cp",
+        "type": "command",
+        "description": "Copy files and directories.",
+        "long_description": "The cp command is used to copy files or directories from one location to another. It can preserve attributes and copy directories recursively.",
+        "syntax": "cp [options] source destination",
+        "details": [
+            "source: The file or directory to copy.",
+            "destination: The location where the file should be copied."
+        ],
+        "options": {
+            "-r": "Recursively copy directories.",
+            "-p": "Preserve file attributes (timestamps, permissions, etc.).",
+            "-i": "Prompt before overwriting an existing file.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "cron",
+        "type": "command",
+        "description": "Daemon to execute scheduled commands.",
+        "long_description": "The cron command schedules and automates tasks to run at specific times or intervals. Users define jobs in a crontab file.",
+        "syntax": "cron",
+        "details": ["Runs in the background and executes scheduled tasks."],
+        "options": {
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "crontab",
+        "type": "command",
+        "description": "Manage scheduled tasks in cron.",
+        "long_description": "The crontab command is used to edit, list, or remove scheduled tasks in the cron job scheduler. Each user has their own crontab file.",
+        "syntax": "crontab [options]",
+        "details": ["Schedules commands to run at specified times."],
+        "options": {
+            "-e": "Edit the crontab file.",
+            "-l": "List the current scheduled jobs.",
+            "-r": "Remove the current crontab file.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "curl",
+        "type": "command",
+        "description": "Transfer data from or to a server.",
+        "long_description": "The curl command is used to transfer data using various protocols like HTTP, HTTPS, FTP, and more. It is commonly used for downloading files and making API requests.",
+        "syntax": "curl [options] URL",
+        "details": ["URL: The address of the file or API to fetch data from."],
+        "options": {
+            "-O": "Download file and save it with its original name.",
+            "-o [filename]": "Save output to a specific file.",
+            "-I": "Fetch headers only.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "cut",
+        "type": "command",
+        "description": "Remove sections from each line of input.",
+        "long_description": "The cut command extracts sections of a file or input based on a delimiter, character position, or field.",
+        "syntax": "cut [options] file",
+        "details": ["file: The file or input to process."],
+        "options": {
+            "-f": "Specify field numbers (e.g., -f1,3).",
+            "-d": "Specify a delimiter (default is tab).",
+            "-c": "Extract specific character positions.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "date",
+        "type": "command",
+        "description": "Display or set the system date and time.",
+        "long_description": "The date command prints the current system date and time. It can also be used to format dates or set the system clock.",
+        "syntax": "date [options]",
+        "details": ["Displays or sets the date and time."],
+        "options": {
+            "+%Y-%m-%d": "Format output as YYYY-MM-DD.",
+            "-s '[STRING]'": "Set the system date/time.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "df",
+        "type": "command",
+        "description": "Report file system disk space usage.",
+        "long_description": "The df command displays information about disk space usage for file systems, including total size, used space, and available space.",
+        "syntax": "df [options]",
+        "details": ["Shows disk space usage for mounted file systems."],
+        "options": {
+            "-h": "Display sizes in human-readable format.",
+            "-T": "Show file system types.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "diff",
+        "type": "command",
+        "description": "Compare the differences between two files.",
+        "long_description": "The diff command compares two files line by line and shows the differences between them. It is useful for tracking changes in text files.",
+        "syntax": "diff [options] file1 file2",
+        "details": [
+            "file1: The first file to compare.",
+            "file2: The second file to compare."
+        ],
+        "options": {
+            "-u": "Show differences in unified format.",
+            "-q": "Suppress output; only show if files differ.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "dig",
+        "type": "command",
+        "description": "Query DNS records for a domain.",
+        "long_description": "The dig command retrieves DNS records for a domain, providing detailed information about name servers, IP addresses, and mail exchanges.",
+        "syntax": "dig [options] domain",
+        "details": ["domain: The domain name to query."],
+        "options": {
+            "+short": "Display concise output.",
+            "@nameserver": "Query a specific DNS server.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "du",
+        "type": "command",
+        "description": "Estimate file space usage.",
+        "long_description": "The du command calculates and displays the disk usage of files and directories. It is useful for finding large files and monitoring storage usage.",
+        "syntax": "du [options] [directory]",
+        "details": [
+            "directory: The directory to analyze (default is the current directory)."
+        ],
+        "options": {
+            "-h": "Display sizes in human-readable format.",
+            "-s": "Show only the total size for each directory.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "echo",
+        "type": "command",
+        "description": "Display a message or the value of a variable.",
+        "long_description": "The echo command prints text to the terminal. It is commonly used in scripts to display messages, variable values, or formatted output.",
+        "syntax": "echo [options] [string]",
+        "details": ["string: The text to display."],
+        "options": {
+            "-n": "Do not print a newline at the end.",
+            "-e": "Enable interpretation of escape characters.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "env",
+        "type": "command",
+        "description": "Display or modify environment variables.",
+        "long_description": "The env command prints the environment variables or runs a command with modified environment settings.",
+        "syntax": "env [options] [command]",
+        "details": [
+            "command: The command to execute with modified environment variables."
+        ],
+        "options": {
+            "-i": "Start with an empty environment.",
+            "VAR=value": "Set an environment variable for the command.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "exit",
+        "type": "command",
+        "description": "Exit the current shell session.",
+        "long_description": "The exit command terminates the shell session or a script. An optional exit code can be specified to indicate success or failure.",
+        "syntax": "exit [exit_code]",
+        "details": [
+            "exit_code: A numeric value indicating success (0) or failure (non-zero)."
+        ],
+        "options": {
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "export",
+        "type": "command",
+        "description": "Set an environment variable for child processes.",
+        "long_description": "The export command defines environment variables that persist for child processes of the current shell.",
+        "syntax": "export VAR=value",
+        "details": [
+            "VAR: The name of the variable.",
+            "value: The value assigned to the variable."
+        ],
+        "options": {
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "find",
+        "type": "command",
+        "description": "Search for files and directories.",
+        "long_description": "The find command locates files and directories based on name, type, size, modification time, and other criteria.",
+        "syntax": "find [directory] [options]",
+        "details": ["directory: The starting location for the search."],
+        "options": {
+            "-name [pattern]": "Search for files matching a name pattern.",
+            "-type [f/d]": "Find files (f) or directories (d).",
+            "-size [+/-size]": "Find files based on size.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "free",
+        "type": "command",
+        "description": "Display memory usage information.",
+        "long_description": "The free command shows the total, used, and available memory (RAM and swap) in the system.",
+        "syntax": "free [options]",
+        "details": ["Displays information about system memory usage."],
+        "options": {
+            "-h": "Show output in human-readable format.",
+            "-m": "Display memory in megabytes.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "grep",
+        "type": "command",
+        "description": "Search for a pattern in a file or input.",
+        "long_description": "The grep command searches for a specified pattern in files or standard input. It is useful for filtering text and extracting relevant lines.",
+        "syntax": "grep [options] pattern [file...]",
+        "details": [
+            "pattern: The text pattern to search for.",
+            "file: The file(s) to search in."
+        ],
+        "options": {
+            "-i": "Ignore case differences.",
+            "-v": "Invert match (show lines that do not match).",
+            "-r": "Search recursively in directories.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "groupadd",
+        "type": "command",
+        "description": "Create a new user group.",
+        "long_description": "The groupadd command is used to create new user groups in the system.",
+        "syntax": "groupadd [options] group_name",
+        "details": ["group_name: The name of the new group."],
+        "options": {
+            "-g [GID]": "Specify a group ID.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "head",
+        "type": "command",
+        "description": "Display the first few lines of a file.",
+        "long_description": "The head command prints the first 10 lines of a file by default. It is useful for quickly viewing the beginning of large files.",
+        "syntax": "head [options] [file...]",
+        "details": ["file: The file(s) to read from."],
+        "options": {
+            "-n [number]": "Specify the number of lines to display.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "hostname",
+        "type": "command",
+        "description": "Display or set the system's hostname.",
+        "long_description": "The hostname command shows the system's network name. It can also be used to set a new hostname.",
+        "syntax": "hostname [options]",
+        "details": ["Displays or changes the hostname."],
+        "options": {
+            "-f": "Show the fully qualified domain name (FQDN).",
+            "-I": "Display the system's IP addresses.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "id",
+        "type": "command",
+        "description": "Display user ID (UID) and group ID (GID) information.",
+        "long_description": "The id command prints user and group IDs for the current or specified user. It helps in checking permissions and user privileges.",
+        "syntax": "id [options] [username]",
+        "details": [
+            "username: The user to check (optional, defaults to the current user)."
+        ],
+        "options": {
+            "-u": "Display only the user ID (UID).",
+            "-g": "Display only the group ID (GID).",
+            "-G": "Show all group IDs associated with the user.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "ifconfig",
+        "type": "command",
+        "description": "Configure or display network interface settings.",
+        "long_description": "The ifconfig command is used to display or modify network interface settings, such as IP addresses, netmasks, and MAC addresses.",
+        "syntax": "ifconfig [interface] [options]",
+        "details": [
+            "interface: The network interface to configure (e.g., eth0, wlan0)."
+        ],
+        "options": {
+            "up": "Enable the network interface.",
+            "down": "Disable the network interface.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "iptables",
+        "type": "command",
+        "description": "Manage firewall rules on Linux.",
+        "long_description": "The iptables command configures the Linux kernel firewall, allowing administrators to define rules for packet filtering and network security.",
+        "syntax": "iptables [options]",
+        "details": ["Used to define rules for incoming and outgoing traffic."],
+        "options": {
+            "-A": "Append a rule to a chain.",
+            "-D": "Delete a rule from a chain.",
+            "-L": "List all firewall rules.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "kill",
         "type": "command",
-        "description": "Send a signal to a process.",
-        "long_description": "The kill command in Linux is used to send a signal to a process, usually to terminate it. It can be used to stop processes that are running in the background or to send other signals to processes.",
-        "syntax": "kill [OPTION]... PID...",
-        "details": [
-            "PID: The process ID(s) to send the signal to.",
-            "OPTION: Optional flags to modify the behavior of the command."
-        ],
+        "description": "Send a signal to a process, usually to terminate it.",
+        "long_description": "The kill command sends signals to processes by specifying their process ID (PID). It is often used to stop unresponsive programs.",
+        "syntax": "kill [options] PID",
+        "details": ["PID: The process ID of the target program."],
         "options": {
-            "-l": "List all signal names.",
-            "-s": "Specify the signal to send.",
-            "-n": "Specify the signal number to send.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-9": "Force kill a process.",
+            "-15": "Gracefully terminate a process (default).",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "less",
         "type": "command",
-        "description": "View file contents interactively.",
-        "long_description": "The less command in Linux is used to view the contents of files interactively. It allows users to scroll through the file, search for text, and navigate through the file using keyboard commands.",
-        "syntax": "less [OPTION]... [FILE]...",
-        "details": [
-            "FILE: The file(s) to view.",
-            "OPTION: Optional flags to modify the behavior of the command."
-        ],
+        "description": "View file contents page by page.",
+        "long_description": "The less command allows users to view large files page by page, with options for navigation and search.",
+        "syntax": "less [options] file",
+        "details": ["file: The file to read."],
         "options": {
             "-N": "Show line numbers.",
-            "-S": "Chop long lines.",
-            "-X": "Disable termcap initialization.",
-            "-F": "Exit if the output fits on one screen.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-s": "Squeeze multiple blank lines into one.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "ln",
         "type": "command",
-        "description": "Create hard and symbolic links.",
-        "long_description": "The ln command in Linux is used to create hard and symbolic links to files and directories. Hard links are direct references to the file's data, while symbolic links are pointers to the file's location.",
-        "syntax": "ln [OPTION]... TARGET [LINK_NAME]",
+        "description": "Create links between files.",
+        "long_description": "The ln command creates hard or symbolic (soft) links between files, allowing multiple references to the same file.",
+        "syntax": "ln [options] target link_name",
         "details": [
-            "TARGET: The file or directory to link to.",
-            "LINK_NAME: The name of the link to create.",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "target: The original file.",
+            "link_name: The new link name."
         ],
         "options": {
-            "-s": "Make symbolic links instead of hard links.",
-            "-f": "Remove existing destination files.",
-            "-n": "Do not dereference symbolic links.",
-            "-v": "Print name of each linked file.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-s": "Create a symbolic (soft) link.",
+            "-f": "Force creation, overwriting existing links.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "ls",
         "type": "command",
-        "description": "List directory contents.",
-        "long_description": "The ls command in Linux is used to list the contents of directories. It provides information about files and directories, including their names, sizes, permissions, and more.",
-        "syntax": "ls [OPTION]... [FILE]...",
+        "description": "List files and directories.",
+        "long_description": "The ls command displays the contents of a directory, including files and subdirectories. It supports various options for sorting and displaying information.",
+        "syntax": "ls [options] [directory]",
         "details": [
-            "FILE: The file(s) or directory(ies) to list.",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "directory: The directory to list (defaults to the current directory)."
         ],
         "options": {
-            "-a": "Include hidden files.",
-            "-l": "Use a long listing format.",
-            "-h": "With -l, print sizes in human readable format.",
-            "-r": "Reverse order while sorting.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-l": "Display detailed file information.",
+            "-a": "Show hidden files.",
+            "-h": "Show file sizes in human-readable format.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "man",
         "type": "command",
-        "description": "Display the manual for a command.",
-        "long_description": "The man command in Linux is used to display the manual pages for commands. It provides detailed information about the command, including its syntax, options, and examples.",
-        "syntax": "man [OPTION]... [COMMAND]...",
-        "details": [
-            "COMMAND: The command to display the manual for.",
-            "OPTION: Optional flags to modify the behavior of the command."
-        ],
+        "description": "Display the manual page for a command.",
+        "long_description": "The man command retrieves and displays the manual pages for Linux commands, providing detailed usage information and options.",
+        "syntax": "man [command]",
+        "details": ["command: The command to look up in the manual."],
         "options": {
-            "-k": "Search the short descriptions and manual page names for the keyword.",
-            "-f": "Display only the first page found.",
-            "-a": "Display all pages matching the command.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-k": "Search for a command by keyword.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "mkdir",
         "type": "command",
-        "description": "Create directories.",
-        "long_description": "The mkdir command in Linux is used to create directories. It can create single or multiple directories at once and set permissions for the new directories.",
-        "syntax": "mkdir [OPTION]... DIRECTORY...",
-        "details": [
-            "DIRECTORY: The directory(ies) to create.",
-            "OPTION: Optional flags to modify the behavior of the command."
-        ],
+        "description": "Create a new directory.",
+        "long_description": "The mkdir command allows users to create new directories in a specified location.",
+        "syntax": "mkdir [options] directory_name",
+        "details": ["directory_name: The name of the new directory."],
         "options": {
-            "-p": "Create parent directories as needed.",
-            "-m": "Set file mode (permissions).",
-            "-v": "Print a message for each created directory.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-p": "Create parent directories if they don't exist.",
+            "-m": "Set permissions for the new directory.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "mv",
         "type": "command",
         "description": "Move or rename files and directories.",
-        "long_description": "The mv command in Linux is used to move or rename files and directories. It can move files to a different directory or rename them within the same directory.",
-        "syntax": "mv [OPTION]... SOURCE... DIRECTORY",
+        "long_description": "The mv command moves files or directories from one location to another. It is also used to rename files.",
+        "syntax": "mv [options] source destination",
         "details": [
-            "SOURCE: The file(s) or directory(ies) to move or rename.",
-            "DIRECTORY: The destination directory.",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "source: The file or directory to move.",
+            "destination: The new location or name."
         ],
         "options": {
-            "-f": "Do not prompt before overwriting.",
-            "-i": "Prompt before overwriting.",
-            "-n": "Do not overwrite an existing file.",
-            "-v": "Explain what is being done.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
-        }
-    },
-    {
-        "name": "ps",
-        "type": "command",
-        "description": "Report a snapshot of current processes.",
-        "long_description": "The ps command in Linux is used to report a snapshot of the current processes. It provides information about the processes running on the system, including their process IDs, user IDs, CPU usage, memory usage, and more.",
-        "syntax": "ps [OPTION]...",
-        "details": [
-            "OPTION: Optional flags to modify the behavior of the command."
-        ],
-        "options": {
-            "-e": "Select all processes.",
-            "-f": "Do full-format listing.",
-            "-u": "Display user-oriented format.",
-            "-x": "Include processes without a controlling terminal.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
-        }
-    },
-    {
-        "name": "pwd",
-        "type": "command",
-        "description": "Print the current working directory.",
-        "long_description": "The pwd command in Linux is used to print the current working directory. It displays the full path of the directory you are currently in.",
-        "syntax": "pwd",
-        "details": [],
-        "options": {
-            "-L": "Print the value of $PWD if it names the current working directory.",
-            "-P": "Print the physical directory, without any symbolic links.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
-        }
-    },
-    {
-        "name": "rm",
-        "type": "command",
-        "description": "Remove files or directories.",
-        "long_description": "The rm command in Linux is used to remove files or directories. It can delete single files, multiple files, or entire directories.",
-        "syntax": "rm [OPTION]... FILE...",
-        "details": [
-            "FILE: The file(s) or directory(ies) to remove.",
-            "OPTION: Optional flags to modify the behavior of the command."
-        ],
-        "options": {
-            "-f": "Ignore nonexistent files and arguments, never prompt.",
-            "-i": "Prompt before every removal.",
-            "-r": "Remove directories and their contents recursively.",
-            "-v": "Explain what is being done.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-i": "Prompt before overwriting existing files.",
+            "-f": "Force move without prompting.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "rmdir",
         "type": "command",
         "description": "Remove empty directories.",
-        "long_description": "The rmdir command in Linux is used to remove empty directories. It can only delete directories that are empty.",
-        "syntax": "rmdir [OPTION]... DIRECTORY...",
-        "details": [
-            "DIRECTORY: The directory(ies) to remove.",
-            "OPTION: Optional flags to modify the behavior of the command."
-        ],
+        "long_description": "The rmdir command deletes empty directories. Unlike 'rm -r', it does not remove directories containing files.",
+        "syntax": "rmdir [options] directory",
+        "details": ["directory: The empty directory to remove."],
         "options": {
-            "-p": "Remove DIRECTORY and its ancestors.",
-            "-v": "Output a diagnostic for every directory processed.",
-            "--ignore-fail-on-non-empty": "Ignore each failure that is solely because a directory is non-empty.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "--ignore-fail-on-non-empty": "Suppress errors if the directory is not empty.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "scp",
         "type": "command",
-        "description": "Secure copy (remote file copy program).",
-        "long_description": "The scp command in Linux is used to securely copy files between hosts on a network. It uses SSH for data transfer and provides the same authentication and security as SSH.",
-        "syntax": "scp [OPTION]... [USER@]SRC_HOST:]SRC_FILE [USER@]DEST_HOST:]DEST_FILE",
+        "description": "Securely copy files between hosts over SSH.",
+        "long_description": "The scp command securely transfers files between local and remote hosts using SSH encryption.",
+        "syntax": "scp [options] source destination",
         "details": [
-            "USER: The user to authenticate as.",
-            "SRC_HOST: The source host.",
-            "SRC_FILE: The source file.",
-            "DEST_HOST: The destination host.",
-            "DEST_FILE: The destination file.",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "source: The file to copy (local or remote).",
+            "destination: The target location (local or remote)."
         ],
         "options": {
-            "-r": "Recursively copy entire directories.",
-            "-p": "Preserve file attributes.",
-            "-q": "Suppress non-error messages.",
-            "-C": "Enable compression.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-r": "Recursively copy directories.",
+            "-P": "Specify the remote SSH port.",
+            "-C": "Enable compression during transfer.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "sed",
         "type": "command",
-        "description": "Stream editor for filtering and transforming text.",
-        "long_description": "The sed command in Linux is a stream editor used for filtering and transforming text. It can perform basic text transformations on an input stream (a file or input from a pipeline).",
-        "syntax": "sed [OPTION]... {script-only-if-no-other-script} [input-file]...",
+        "description": "Stream editor for modifying text in files.",
+        "long_description": "The sed command processes and transforms text in files using pattern-based replacements.",
+        "syntax": "sed [options] 's/pattern/replacement/' file",
         "details": [
-            "input-file: The file(s) to process.",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "pattern: The text pattern to search for.",
+            "replacement: The text to replace the pattern with.",
+            "file: The file to modify."
         ],
         "options": {
-            "-n": "Suppress automatic printing of pattern space.",
-            "-e": "Add the script to the commands to be executed.",
-            "-f": "Add the contents of script-file to the commands to be executed.",
             "-i": "Edit files in place.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-n": "Suppress automatic printing of lines.",
+            "-e": "Execute multiple editing commands.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "shutdown",
+        "type": "command",
+        "description": "Power off or reboot the system.",
+        "long_description": "The shutdown command schedules or immediately powers off or reboots a Linux system.",
+        "syntax": "shutdown [options] [time] [message]",
+        "details": [
+            "time: Specifies when to shut down (e.g., 'now', '+10' for 10 minutes later).",
+            "message: An optional broadcast message for users."
+        ],
+        "options": {
+            "-r": "Reboot instead of shutting down.",
+            "-h": "Power off after shutdown.",
+            "-c": "Cancel a scheduled shutdown.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "sort",
+        "type": "command",
+        "description": "Sort lines of text files.",
+        "long_description": "The sort command arranges lines of text in a specified order, such as alphabetical or numerical sorting.",
+        "syntax": "sort [options] file",
+        "details": ["file: The file containing the lines to sort."],
+        "options": {
+            "-n": "Sort numerically.",
+            "-r": "Reverse the sorting order.",
+            "-u": "Remove duplicate lines.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "ssh",
         "type": "command",
-        "description": "OpenSSH SSH client (remote login program).",
-        "long_description": "The ssh command in Linux is used to securely log into a remote machine and execute commands on it. It is the most common way to access remote Linux servers.",
-        "syntax": "ssh [OPTION]... [USER@]HOST",
+        "description": "Securely connect to remote machines over SSH.",
+        "long_description": "The ssh command allows users to securely log into remote servers and execute commands over an encrypted connection.",
+        "syntax": "ssh [options] user@host",
         "details": [
-            "USER: The user to authenticate as.",
-            "HOST: The remote host to connect to.",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "user: The remote username.",
+            "host: The remote machine's hostname or IP address."
         ],
         "options": {
-            "-p": "Port to connect to on the remote host.",
-            "-i": "File from which the identity (private key) for public key authentication is read.",
-            "-v": "Verbose mode.",
-            "-C": "Request compression of all data.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-p": "Specify the SSH port.",
+            "-i": "Specify a private key for authentication.",
+            "-L": "Set up local port forwarding.",
+            "--help": "Display help information and exit."
         }
     },
     {
-        "name": "sudo",
+        "name": "stat",
         "type": "command",
-        "description": "Execute a command as another user.",
-        "long_description": "The sudo command in Linux is used to execute a command as another user, typically the superuser. It allows users to run programs with the security privileges of another user.",
-        "syntax": "sudo [OPTION]... COMMAND",
+        "description": "Display detailed information about files and directories.",
+        "long_description": "The stat command shows detailed attributes of a file, such as size, modification time, and permissions.",
+        "syntax": "stat [options] file",
+        "details": ["file: The file or directory to inspect."],
+        "options": {
+            "-c": "Customize output format.",
+            "--format": "Specify an output format.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "su",
+        "type": "command",
+        "description": "Switch to another user account.",
+        "long_description": "The su command allows a user to switch to another user\u2019s account, typically root, to execute commands with elevated privileges.",
+        "syntax": "su [options] [username]",
         "details": [
-            "COMMAND: The command to execute.",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "username: The user account to switch to (default is root)."
         ],
         "options": {
-            "-u": "Run the command as a specified user.",
-            "-k": "Invalidate the user's cached credentials.",
-            "-b": "Run the command in the background.",
-            "-E": "Preserve the user's environment.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-": "Start a new login shell.",
+            "-c": "Execute a command as the specified user.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "tail",
         "type": "command",
-        "description": "Output the last part of files.",
-        "long_description": "The tail command in Linux is used to output the last part of files. By default, it displays the last 10 lines of each file. It can be used to monitor the end of a file in real-time.",
-        "syntax": "tail [OPTION]... [FILE]...",
-        "details": [
-            "FILE: The file(s) to display the last part of.",
-            "OPTION: Optional flags to modify the behavior of the command."
-        ],
+        "description": "Display the last lines of a file.",
+        "long_description": "The tail command outputs the last few lines of a file, commonly used for monitoring log files.",
+        "syntax": "tail [options] file",
+        "details": ["file: The file to read."],
         "options": {
-            "-f": "Output appended data as the file grows.",
-            "-n": "Output the last K lines, instead of the last 10.",
-            "-q": "Never output headers giving file names.",
-            "-v": "Always output headers giving file names.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-n": "Specify the number of lines to display.",
+            "-f": "Follow the file for real-time updates.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "tar",
         "type": "command",
-        "description": "An archiving utility.",
-        "long_description": "The tar command in Linux is used to create, maintain, modify, and extract files from an archive file (commonly known as a tarball). It supports various compression methods.",
-        "syntax": "tar [OPTION]... [FILE]...",
+        "description": "Archive files using the tar format.",
+        "long_description": "The tar command creates, extracts, or modifies tar archive files, commonly used for backups and file transfers.",
+        "syntax": "tar [options] archive file(s)",
         "details": [
-            "FILE: The file(s) to archive or extract.",
-            "OPTION: Optional flags to modify the behavior of the command."
+            "archive: The name of the tar file.",
+            "file(s): The files or directories to include."
         ],
         "options": {
             "-c": "Create a new archive.",
             "-x": "Extract files from an archive.",
-            "-t": "List the contents of an archive.",
-            "-z": "Filter the archive through gzip.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-v": "Enable verbose mode.",
+            "-f": "Specify the archive file name.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "tee",
+        "type": "command",
+        "description": "Read from standard input and write to both standard output and a file.",
+        "long_description": "The tee command takes input, displays it on the terminal, and simultaneously writes it to a file.",
+        "syntax": "tee [options] file",
+        "details": ["file: The file to write the output to."],
+        "options": {
+            "-a": "Append to the file instead of overwriting.",
+            "--help": "Display help information and exit."
         }
     },
     {
         "name": "top",
         "type": "command",
-        "description": "Display Linux tasks.",
-        "long_description": "The top command in Linux is used to display real-time information about the system's running processes. It provides a dynamic view of the system's performance, including CPU and memory usage.",
-        "syntax": "top [OPTION]...",
+        "description": "Display real-time system resource usage and running processes.",
+        "long_description": "The top command provides a live view of system performance, including CPU and memory usage by processes.",
+        "syntax": "top [options]",
+        "details": ["Displays system statistics and active processes."],
+        "options": {
+            "-d [seconds]": "Specify the delay between updates.",
+            "-o [field]": "Sort by a specific field.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "touch",
+        "type": "command",
+        "description": "Create empty files or update file timestamps.",
+        "long_description": "The touch command is used to create empty files or modify the last access and modification timestamps of existing files.",
+        "syntax": "touch [options] file",
+        "details": ["file: The file to create or update."],
+        "options": {
+            "-c": "Do not create the file if it does not exist.",
+            "-t [timestamp]": "Set a specific timestamp.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "tr",
+        "type": "command",
+        "description": "Translate or delete characters in text.",
+        "long_description": "The tr command replaces or removes characters from input, useful for text processing tasks.",
+        "syntax": "tr [options] set1 [set2]",
         "details": [
-            "OPTION: Optional flags to modify the behavior of the command."
+            "set1: The characters to translate or delete.",
+            "set2: The replacement characters (if translating)."
         ],
         "options": {
-            "-b": "Batch mode operation.",
-            "-n": "Number of iterations in batch mode.",
-            "-d": "Delay time between updates.",
-            "-p": "Monitor only processes with specified process IDs.",
-            "--help": "Display help information and exit.",
-            "--version": "Display version information and exit."
+            "-d": "Delete characters specified in set1.",
+            "-s": "Replace repeated characters with a single instance.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "uname",
+        "type": "command",
+        "description": "Display system information.",
+        "long_description": "The uname command prints system-related details like kernel name, version, and architecture.",
+        "syntax": "uname [options]",
+        "details": ["Displays information about the system."],
+        "options": {
+            "-a": "Show all system information.",
+            "-r": "Display the kernel release.",
+            "-m": "Display the machine hardware name.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "uptime",
+        "type": "command",
+        "description": "Show how long the system has been running.",
+        "long_description": "The uptime command provides the current time, system uptime duration, and the number of logged-in users.",
+        "syntax": "uptime",
+        "details": ["Displays system uptime and user statistics."],
+        "options": {
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "useradd",
+        "type": "command",
+        "description": "Create a new user account.",
+        "long_description": "The useradd command adds a new user to the system, creating a home directory and setting initial account settings.",
+        "syntax": "useradd [options] username",
+        "details": ["username: The name of the user to add."],
+        "options": {
+            "-m": "Create a home directory for the user.",
+            "-s [shell]": "Specify the user's login shell.",
+            "-G [group]": "Add the user to a specific group.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "usermod",
+        "type": "command",
+        "description": "Modify an existing user account.",
+        "long_description": "The usermod command updates user account settings such as username, group membership, or shell.",
+        "syntax": "usermod [options] username",
+        "details": ["username: The name of the user to modify."],
+        "options": {
+            "-l [newname]": "Change the username.",
+            "-g [group]": "Change the user's primary group.",
+            "-aG [group]": "Add the user to an additional group.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "vi",
+        "type": "command",
+        "description": "A powerful text editor.",
+        "long_description": "The vi command launches the Vi text editor, an advanced terminal-based text editor with powerful editing features.",
+        "syntax": "vi [options] file",
+        "details": ["file: The file to edit or create if it does not exist."],
+        "options": {
+            "-R": "Open the file in read-only mode.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "wc",
+        "type": "command",
+        "description": "Count lines, words, and characters in a file.",
+        "long_description": "The wc command counts the number of lines, words, and characters in a given file or input.",
+        "syntax": "wc [options] file",
+        "details": ["file: The file to analyze."],
+        "options": {
+            "-l": "Count lines only.",
+            "-w": "Count words only.",
+            "-c": "Count bytes only.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "wget",
+        "type": "command",
+        "description": "Download files from the web.",
+        "long_description": "The wget command is a non-interactive utility for downloading files from the internet, supporting HTTP, HTTPS, and FTP protocols.",
+        "syntax": "wget [options] URL",
+        "details": ["URL: The web address of the file to download."],
+        "options": {
+            "-O [file]": "Save the downloaded file with a custom name.",
+            "-c": "Resume an interrupted download.",
+            "--limit-rate": "Limit download speed.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "which",
+        "type": "command",
+        "description": "Locate the executable file of a command.",
+        "long_description": "The which command finds the full path of the executable associated with a given command name.",
+        "syntax": "which [options] command",
+        "details": ["command: The name of the command to locate."],
+        "options": {
+            "-a": "Show all locations of the command in the PATH.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "who",
+        "type": "command",
+        "description": "Show logged-in users.",
+        "long_description": "The who command displays information about users currently logged into the system.",
+        "syntax": "who [options]",
+        "details": ["Displays a list of active user sessions."],
+        "options": {
+            "-b": "Show the last system boot time.",
+            "-m": "Show information about the current user only.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "xargs",
+        "type": "command",
+        "description": "Build and execute commands from standard input.",
+        "long_description": "The xargs command takes input from a pipe or file and constructs and executes commands using that input.",
+        "syntax": "xargs [options] command",
+        "details": ["command: The command to execute using the input."],
+        "options": {
+            "-n [num]": "Specify the number of arguments per command.",
+            "-I [replace]": "Define a replacement string for the input.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "yes",
+        "type": "command",
+        "description": "Output a string repeatedly until stopped.",
+        "long_description": "The yes command continuously prints a specified string or 'y' until interrupted.",
+        "syntax": "yes [string]",
+        "details": ["string: The text to output repeatedly (default is 'y')."],
+        "options": {
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "zip",
+        "type": "command",
+        "description": "Compress files into a ZIP archive.",
+        "long_description": "The zip command packages multiple files into a compressed ZIP archive.",
+        "syntax": "zip [options] archive file(s)",
+        "details": [
+            "archive: The name of the output ZIP file.",
+            "file(s): The files to compress."
+        ],
+        "options": {
+            "-r": "Recursively add directories to the ZIP archive.",
+            "-e": "Encrypt the ZIP file with a password.",
+            "-q": "Run in quiet mode.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "zcat",
+        "type": "command",
+        "description": "View the contents of compressed files without extracting.",
+        "long_description": "The zcat command displays the content of compressed files without decompressing them first.",
+        "syntax": "zcat [options] file.gz",
+        "details": ["file.gz: The compressed file to read."],
+        "options": {
+            "-f": "Force decompression even if the file does not have a .gz extension.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "zgrep",
+        "type": "command",
+        "description": "Search compressed files for a pattern.",
+        "long_description": "The zgrep command searches inside compressed files for specific patterns, similar to grep.",
+        "syntax": "zgrep [options] pattern file.gz",
+        "details": [
+            "pattern: The text to search for.",
+            "file.gz: The compressed file to scan."
+        ],
+        "options": {
+            "-i": "Perform case-insensitive search.",
+            "-c": "Display the count of matching lines.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "zpool",
+        "type": "command",
+        "description": "Manage ZFS storage pools.",
+        "long_description": "The zpool command is used to create, destroy, and manage ZFS storage pools.",
+        "syntax": "zpool [options] command",
+        "details": ["command: A subcommand like create, destroy, status, etc."],
+        "options": {
+            "create": "Create a new ZFS pool.",
+            "destroy": "Destroy an existing pool.",
+            "status": "Show the status of all pools.",
+            "--help": "Display help information and exit."
+        }
+    },
+    {
+        "name": "zsh",
+        "type": "command",
+        "description": "Z Shell, an advanced command-line interpreter.",
+        "long_description": "The zsh command launches the Z Shell, an alternative to Bash with powerful features such as improved autocomplete and customization.",
+        "syntax": "zsh [options]",
+        "details": ["Starts an interactive Zsh session."],
+        "options": {
+            "--version": "Display Zsh version.",
+            "--help": "Display help information and exit."
         }
     }
 ]
