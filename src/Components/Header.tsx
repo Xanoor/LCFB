@@ -1,4 +1,4 @@
-// SearchBar.tsx
+// Header.tsx
 
 import { useEffect, useState } from "react";
 import { Command } from "../assets/types";
