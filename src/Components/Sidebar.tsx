@@ -17,7 +17,12 @@ function Sidebar({ commands, cmd, setCmd }: SidebarProps) {
         if (window.innerWidth < 768) {
             const sidebar = document.getElementById("sidebar");
             if (sidebar) {
-                sidebar.classList.remove("active");
+                if (sidebar.classList.contains("active")) {
+                    sidebar.classList.remove("active");
+                    setTimeout(() => {
+                        sidebar.style.display = "none";
+                    }, 350);
+                }
             }
         }
     };

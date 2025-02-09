@@ -36,8 +36,14 @@ function SearchBar({ commands, cmd, setCmd }: SearchBarProps) {
         if (sidebar) {
             if (sidebar.classList.contains("active")) {
                 sidebar.classList.remove("active");
+                setTimeout(() => {
+                    sidebar.style.display = "none";
+                }, 350);
             } else {
-                sidebar.classList.add("active");
+                sidebar.style.display = "block";
+                setTimeout(() => {
+                    sidebar.classList.add("active");
+                }, 0);
             }
         }
     };
@@ -116,7 +122,7 @@ function SearchBar({ commands, cmd, setCmd }: SearchBarProps) {
                     ></input>
                     <div
                         id="searchBarExpand"
-                        style={{ display: isExpanded ? "block" : "none" }}
+                        className={isExpanded ? "active" : ""}
                     >
                         {foundItems.length === 0 ? (
                             <p>No items</p>
@@ -127,7 +133,7 @@ function SearchBar({ commands, cmd, setCmd }: SearchBarProps) {
                                     onClick={() =>
                                         handleOnClick(element.command)
                                     }
-                                    key={element.command}
+                                    key={element.command + "sb"}
                                 >
                                     <p
                                         className={

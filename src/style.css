@@ -80,10 +80,18 @@ main {
     background: var(--secondary);
     padding: 10px;
     border-radius: 20px;
-    transition: all 1.5s ease;
+    overflow: hidden;
 }
 
 #searchBarExpand {
+    max-height: 0;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    transition: max-height 0.2s ease, padding 0.5s;
+}
+
+/* When the searchBar is focused */
+#searchBarExpand.active {
     padding: 2%;
     max-height: 40vh;
     overflow-y: scroll;
@@ -266,15 +274,16 @@ pre.active {
 /* Mobile responsive design */
 @media only screen and (max-width: 768px) {
     #sidebar {
-        display: none;
+        position: absolute;
         width: 100%;
-        height: auto;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 99;
+        transition: transform 0.35s ease;
     }
 
     #sidebar.active {
-        display: block;
-        overflow-y: auto;
-        z-index: 2;
+        transform: translateX(0);
     }
 
     #searchBar {
