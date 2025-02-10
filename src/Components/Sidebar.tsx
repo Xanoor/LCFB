@@ -27,6 +27,19 @@ function Sidebar({ commands, cmd, setCmd }: SidebarProps) {
         }
     };
 
+    /**
+     * Fixes sidebar staying hidden when switching from mobile to desktop.
+     * Ensures it is visible if screen width exceeds 768px.
+     */
+    const handleWindowResize = () => {
+        const sidebar = document.getElementById("sidebar");
+        if (window.innerWidth > 768 && sidebar) {
+            sidebar.style.display = "block";
+        }
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
     return (
         <div id="sidebar">
             <h1>Symbols</h1>
